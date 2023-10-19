@@ -6,4 +6,10 @@ class Main
     {
         echo "Ma page d'accueil";
     }
+
+
+    public function aboutUs(): void
+    {
+        echo "Ma page a propos";
+    }
 }
