@@ -66,5 +66,7 @@ if( !empty($listOfRoutes[$uri]) ){
 
 
 }else{
-    die("Page 404");
+    require "Controllers/Error.php";
+    $customError = new Error();
+    $customError->page404();
 }
