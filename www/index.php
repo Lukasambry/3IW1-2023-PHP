@@ -6,6 +6,8 @@
  *  Si pas de correspondance alors on affichera une page 404
  */
 
+namespace App;
+
 //Comment récupérer et nettoyer l'URI
 // Exemple on doit avoir "/", "/login", "/logout", ...
 $uri = strtolower($_SERVER["REQUEST_URI"]);
