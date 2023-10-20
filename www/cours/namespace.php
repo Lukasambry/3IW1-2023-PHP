@@ -1,5 +1,5 @@
 <?php
-namespace App\Controller;
+namespace App\Controllers;
 class User{
 
 }
@@ -16,4 +16,13 @@ class User{
 /*    -------------------------------------------  */
 
 namespace App;
-new Controller\User();
+use App\Models\User as UserModel;
+use App\Controllers\User as UserController;
+
+//chemin absolue
+//new \App\Models\User();
+//chemin relatif
+//new Models\User();
+
+new UserModel();
+new UserController();

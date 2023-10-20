@@ -5,8 +5,27 @@
  *  Création de l'instance de Security et on appel la method login()
  *  Si pas de correspondance alors on affichera une page 404
  */
-
 namespace App;
+use App\Controllers\Error;
+
+
+spl_autoload_register("App\myAutoloader");
+
+function myAutoloader(String $class): void
+{
+    //$class = App\Core\View
+    $class = str_replace("App\\","", $class);
+    //$class = Core\View
+    $class = str_replace("\\","/", $class);
+    //$class = Core/View
+    if(file_exists($class.".php")){
+        include $class.".php";
+    }
+}
+
+
+
+
 
 //Comment récupérer et nettoyer l'URI
 // Exemple on doit avoir "/", "/login", "/logout", ...
@@ -43,15 +62,17 @@ if( !empty($listOfRoutes[$uri]) ){
 
             if(file_exists("Controllers/".$controller.".php")){
                 include "Controllers/".$controller.".php";
+                $controller = "App\\Controllers\\".$controller;
                 if(class_exists($controller)){
                     $objectController = new $controller();
+
                     if(method_exists($objectController, $action)){
                         $objectController->$action();
                     }else {
                         die("L'action n'existe pas dans le controller");
                     }
 
-                    }else{
+                }else{
                     die("La classe du controller n'existe pas");
                 }
 
