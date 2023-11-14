@@ -3,3 +3,5 @@
 <code>docker compose build</code>
 <code>docker compose up</code>
 <code>docker down</code>
+
+Groupe : AMBRY Lukas, AZARKANE Issam, CARK Dryss, PITORIN Tom - 3IW1
