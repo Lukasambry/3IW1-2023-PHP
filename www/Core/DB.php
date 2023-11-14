@@ -74,16 +74,40 @@ class DB
         $sql = substr($sql, 0, -2);
         $sql .= " WHERE id=:id";
         $stmt = $this->db->prepare($sql);
-        $stmt->execute($attributes);
+        foreach ($attributes as $key => $value) {
+            $stmt->bindValue(":".$key, $value);
+        }
+        $stmt->execute();
     }
 
-    public function populate($id) {
-        echo "<pre>";
-        $stmt = $this->db->prepare("SELECT * FROM ".$this->table." WHERE id= ". $id);
+    // TODO: Try with FETCH_OBJ but failed
+    // public function populate($id) {
+    //     echo "<pre>";
+    //     $stmt = $this->db->prepare("SELECT * FROM ".$this->table." WHERE id= ". $id);
+    //     $stmt->execute();
+    //     $stmt->fetch(\PDO::FETCH_OBJ, $id);
+    //     $attributes = get_object_vars($stmt);
+    // }
+
+
+    public function populate($id) 
+    {
+        $sql = "SELECT * FROM " . $this->table . " WHERE id=:id";
+        $stmt = $this->db->prepare($sql);
+        $stmt->bindValue(":id", $id);
         $stmt->execute();
-        $stmt->fetch(\PDO::FETCH_OBJ, $id);
-        $attributes = get_object_vars($stmt);
-        //var_dump($attributes);
+    
+        if ($stmt->rowCount() > 0) {
+            $data = $stmt->fetch(\PDO::FETCH_ASSOC);
+            foreach ($data as $key => $value) {
+                $setter = 'set' . ucfirst($key);
+                if (method_exists($this, $setter)) {
+                    $this->$setter($value);
+                }
+            }
+        } else {
+            echo "Aucun résultat";
+        }
     }
 
 }

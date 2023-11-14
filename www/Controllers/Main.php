@@ -25,9 +25,12 @@ class Main
         $myArticle->save();
 
         $myUser2 = new User();
-        $myUser2->populate(1);
-        $myUser2->setFirstname('Pas_YVES');
-        $myUser2->setLastname('Pas_Skrypzcyk');
+        $myUser2->populate(76);
+        var_dump($myUser2);
+        $myUser2->setId($myUser2->getId() + 1);
+        $myUser2->setFirstname('Pas_yves');
+        $myUser2->setLastname('Pas_Skrzypczik');
+        var_dump($myUser2);
         $myUser2->save();
 
         $myView = new View("Main/home", "back");
