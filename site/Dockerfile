@@ -10,8 +10,9 @@ RUN apt-get install -y libpq-dev \
 
 RUN apt-get update -y && apt-get install -y libpng-dev libfreetype6-dev libyaml-dev
 
-RUN  docker-php-ext-configure gd --with-freetype
-RUN  docker-php-ext-install gd
+RUN docker-php-ext-install mysqli pdo pdo_mysql
+RUN docker-php-ext-configure gd --with-freetype
+RUN docker-php-ext-install gd
 
 RUN pecl install yamL
 

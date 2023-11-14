@@ -4,13 +4,13 @@ use App\Core\DB;
 
 class User extends DB
 {
-    private int $id;
-    private string $firstname;
-    private string $lastname;
-    private string $email;
-    private string $pwd;
-    private int $status;
-    private bool $isDeleted;
+    protected int $id;
+    protected string $firstname = "";
+    protected string $lastname = "";
+    protected string $email = "";
+    protected string $pwd = "";
+    protected int $status = 0;
+    protected bool $isDeleted;
 
 
     public function __construct()
@@ -138,8 +138,5 @@ class User extends DB
     {
         $this->isDeleted = $isDeleted;
     }
-
-
-
 
 }
