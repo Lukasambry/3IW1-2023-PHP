@@ -7,21 +7,21 @@ class Main
     public function home(): void
     {
 
+        /*
         $myUser = new User();
         $myUser->setFirstname("YVEs");
         $myUser->setLastname("Skrzypczyk   ");
         $myUser->setEmail("Y.skrzypczyk@gmail.com");
         $myUser->setPwd("Test1234");
+        $myUser->save();
+        */
 
-
+        $myUser = User::populate(1);
+        $myUser->setLastname("titi");
         $myUser->save();
 
-        /*
-        $myPage = new Page();
-        $myPage->setTitle("MA super page");
-        $myPage->setDesc("Description de ma super page");
-        $myPage->save();
-        */
+
+
 
         $myView = new View("Main/home", "back");
     }
