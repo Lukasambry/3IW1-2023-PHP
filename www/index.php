@@ -11,6 +11,10 @@ use App\Controllers\Error;
 
 spl_autoload_register("App\myAutoloader");
 
+//  ini_set('display_errors', 1);
+//  ini_set('display_startup_errors', 1);
+//  error_reporting(E_ALL);
+
 function myAutoloader(String $class): void
 {
     //$class = App\Core\View

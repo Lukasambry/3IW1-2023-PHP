@@ -8,7 +8,7 @@ class UserInsert
         return [
             "config"=> [
                         "method"=>"POST",
-                        "action"=>"",
+                        "action"=>"/register",
                         "submit"=>"S'inscrire",
                         "class"=>"form",
                         "id"=>"form-register"
