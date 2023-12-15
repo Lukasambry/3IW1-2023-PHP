@@ -21,6 +21,7 @@
             type="<?= $configInput["type"]??"text"?>"
             id="<?= $configInput["id"]??""?>"
             class="<?= $configInput["class"]??""?>"
+            value="<?php if(isset($_POST[$name]) && $configInput["type"] != 'password'){echo $_POST[$name];} ?>"
             placeholder="<?= $configInput["placeholder"]??""?>"
             <?= (!empty($configInput["required"]))?"required":""?>
         ><br>
